@@ -1163,7 +1163,8 @@ class MockBuilder(Builder):
         # Copy everything mock wrote out to /tmp/tito:
         files = os.listdir(mock_output_dir)
         for rpm in files:
-            shutil.copy2(os.path.join(mock_output_dir, rpm), self.rpmbuild_basedir)
+            if rpm.endswith(".rpm"):
+                shutil.copy2(os.path.join(mock_output_dir, rpm), self.rpmbuild_basedir)
         print
         info_out("Wrote:")
         for rpm in files:
