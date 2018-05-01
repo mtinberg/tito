@@ -447,7 +447,7 @@ def run_command_print(command):
     try:
         p = subprocess.Popen(shlex.split(command),
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env,
-            universal_newlines=True)
+            universal_newlines=True, shell=True)
     except OSError as e:
         status = e.errno
         output = e.strerror
